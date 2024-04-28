@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
+import csv
 import numpy as np
+import matplotlib.pyplot as plt
 
 from src import bit_array_operations as bso
 
@@ -29,3 +30,24 @@ def print_info(alice_bit_array: np.ndarray, bob_bit_array: np.ndarray, sifted_ke
           f"BER = {number_of_errors / len(alice_bit_array): .5f}, "
           f"η = {len(alice_bit_array) / sifted_key_length: .5f}")
 
+
+def csv_write(data: list, path: str):
+    try:
+        with open(path, 'w') as f:
+            writer = csv.writer(f, delimiter=';', lineterminator='\n')
+            for row in data:
+                writer.writerow(list(row))
+    except Exception as e:
+        print(f'Error occurred (csv_write): {e}', flush=True)
+
+
+def csv_read(path: str) -> list:
+    data = []
+    try:
+        with open(path, 'r') as f:
+            reader = csv.reader(f, delimiter=';')
+            for row in reader:
+                data.append(row)
+    except Exception as e:
+        print(f'Error occurred (csv_read): {e}', flush=True)
+    return data
