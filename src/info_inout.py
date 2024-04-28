@@ -24,7 +24,7 @@ def block_print(bit_array: np.ndarray, block_length: int, comment: str):
 
 def print_info(alice_bit_array: np.ndarray, bob_bit_array: np.ndarray, sifted_key_length: int):
     error_positions = bso.calculate_error_positions(alice_bit_array, bob_bit_array)
-    number_of_errors = np.sum(error_positions, dtype=np.uint32)
+    number_of_errors = np.sum(error_positions, dtype=np.intc)
     print(f"Количество ошибок = {number_of_errors}, "
           f"Длина ключа = {len(alice_bit_array)}, "
           f"BER = {number_of_errors / len(alice_bit_array): .5f}, "

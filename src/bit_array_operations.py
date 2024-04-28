@@ -1,15 +1,14 @@
-import random
 import numpy as np
 
 
 def generate_random_bit_array(length: int) -> np.ndarray:
-    random_bit_array = np.random.randint(0, 2, size=length, dtype=np.uint8)
+    random_bit_array = np.random.randint(0, 2, size=length, dtype=np.intc)
     return random_bit_array
 
 
 def introduce_errors(bit_array: np.ndarray, initial_error_probability: float) -> np.ndarray:
     error_mask = np.random.rand(len(bit_array)) < initial_error_probability
-    bit_array_with_errors = bit_array ^ error_mask.astype(np.uint8)  # XOR
+    bit_array_with_errors = bit_array ^ error_mask.astype(np.intc)  # XOR
     return bit_array_with_errors
 
 

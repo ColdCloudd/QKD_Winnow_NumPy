@@ -29,8 +29,8 @@ def winnow(alice_bit_array: np.ndarray, bob_bit_array: np.ndarray, syndrome_powe
 
     remaining_bits_number = block_length - syndrome_power
     array_length = len(alice_privacy_amp_1) - len(b_odd_parity_block_numbers) * syndrome_power
-    alice_privacy_amp_2 = np.empty(array_length, dtype=np.uint8)
-    bob_privacy_amp_2 = np.empty(array_length, dtype=np.uint8)
+    alice_privacy_amp_2 = np.empty(array_length, dtype=np.intc)
+    bob_privacy_amp_2 = np.empty(array_length, dtype=np.intc)
     discarded_bit_pos = [(2 ** i) - 1 for i in range(syndrome_power)]
     j = 0
     for i in range(0, len(alice_privacy_amp_1), block_length):
@@ -63,9 +63,9 @@ def correct_error(bit_block: np.ndarray, first_syndrome: np.ndarray, second_synd
 def calculate_Hamming_hash_function(syndrome_power: int) -> np.ndarray:
     block_length = 2 ** syndrome_power - 1
     # Создание двумерного массива
-    column_indices = np.arange(block_length, dtype=np.uint16)[:, np.newaxis]
+    column_indices = np.arange(block_length, dtype=np.intc)[:, np.newaxis]
     # Расчет массива, состоящего из степеней двойки
-    row_powers_of_2 = 2 ** np.arange(syndrome_power, dtype=np.uint16)
+    row_powers_of_2 = 2 ** np.arange(syndrome_power, dtype=np.intc)
     # Деление столбца на строку с округлением вниз с дальнейшим поэлементным mod 2
     hash_matrix = (column_indices + 1) // row_powers_of_2 % 2
     # Транспонирование матрицы
