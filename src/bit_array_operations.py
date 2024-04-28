@@ -29,4 +29,5 @@ def trim_to_block_length(alice_bit_array: np.ndarray, bob_bit_array: np.ndarray,
 def shuffle_bits(alice_bit_array: np.ndarray, bob_bit_array: np.ndarray, seed: int):
     np.random.seed(seed)
     np.random.shuffle(alice_bit_array)
+    np.random.seed(seed)
     np.random.shuffle(bob_bit_array)

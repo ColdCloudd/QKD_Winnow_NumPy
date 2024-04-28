@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src import bitstring_operations as bso
+from src import bit_array_operations as bso
 
 
 def visualize_error_positions(error_positions: np.ndarray):

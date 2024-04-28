@@ -8,10 +8,13 @@ SIFTED_KEY_LENGTH = 10240
 BER = [0.01, 0.03, 0.05, 0.06, 0.08, 0.1, 0.12, 0.15]
 
 
-combination_elements = [0, 1, 2, 3, 4]
+COMBINATION_ELEMENTS = [0, 1, 2]
 
 
-elements_excluded = [0, -1, -1, -1, -1]
+ELEMENTS_EXCLUDED = [[0],
+                     [-1],
+                     [-1]
+                     ]
 
 # Количество проходов для одной комбинации
 TRIAL_NUMBER = 10
